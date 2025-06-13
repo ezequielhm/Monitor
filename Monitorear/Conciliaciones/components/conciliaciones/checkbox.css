@@ -1,0 +1,44 @@
+:root {
+    --verde: #c6f6d5;;
+    --rojo: #fed7d7;
+}
+
+/* Estilos que afectan tanto a checkbox rojo como a verde */
+/* Ocultar el símbolo del check */
+.checkbox-control .chakra-checkbox__control div {
+    display: none !important;
+}
+
+/* Fondo y borde en hover */
+.checkbox-control:hover .chakra-checkbox__control {
+    background-color: #f0f0f0; /* Fondo en hover */
+}
+
+/* Checkbox verde */
+.checkbox-verde.checkbox-control .chakra-checkbox__control {
+    background-color: #ffffff; /* Fondo base del checkbox */
+    border: 1px solid var(--verde); /* Color del borde base */
+    border-radius: 0.25em;
+    position: relative; /* Necesario para el pseudo-elemento */
+}
+
+/* Fondo y borde cuando está checkeado (verde) */
+.checkbox-verde.checkbox-control[data-checked] .chakra-checkbox__control {
+    background-color: var(--verde); /* Fondo cuando está checkeado (verde) */
+    border-color: var(--verde); /* Borde cuando está checkeado (verde) */
+}
+
+/* Checkbox rojo */
+.checkbox-control.checkbox-rojo .chakra-checkbox__control {
+    background-color: #ffffff; /* Fondo base del checkbox */
+    border: 1px solid var(--rojo); /* Color del borde base */
+    border-radius: 0.25em;
+    padding: 0.6em;
+    position: relative; /* Necesario para el pseudo-elemento */
+}
+
+/* Fondo y borde cuando está checkeado (rojo) */
+.checkbox-rojo.checkbox-control[data-checked] .chakra-checkbox__control {
+    background-color: var(--rojo); /* Fondo cuando está checkeado (rojo) */
+    border-color: var(--rojo); /* Borde cuando está checkeado (verde) */
+}

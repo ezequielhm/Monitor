@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* globals.css */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+.loader {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #EF4444;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.table{
+  background-color: white;
+  margin-right: auto;
+  margin-left: auto;
+}
+.th{
+  border-bottom: 1px solid #f0f0f0;
+}
+.td{
+  border-bottom: 0.5px solid #f0f0f0;
+  padding: 0 !important;
+}
+.th, .td{
+  text-align: center;
+}
+/* Caja que contiene el titulo e iconos de orden y filtro de la cabecera */
+.chakra-stack.css-1igwmid {
+  gap: 0;
+}
+.th-titulo {
+  margin-right: .25em;
+  color: #000000E0;
+  font-weight: unset;
+}
+.tr{
+  display: flex;
+  width: fit-content;
+  font-size: 0.75em;
+}
+
+/*Tamaño fuente de las filas responsive */
+@media screen and (max-width: 1450px) {
+  .estado {
+    font-size: 0.9em !important;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .tr {
+    font-size: 0.7em;
+  }
+  .estado {
+    font-size: 0.8em !important;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .tr {
+    font-size: 0.65em;
+  }
+}
+
+.th{
+  position: relative;
+  display:flex;
+  justify-content: left;
+  align-items: center;
+  color: gray.400;
+  background-color: #fafafa;
+  font-weight: bold;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  text-align: center;
+}
+/*Tamaño fuente de la cabecera responsive */
+@media screen and (min-width: 1200px) {
+  .th {
+    font-size: 0.8em;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .th {
+    font-size: 0.875em;
+  }
+}
+
+/* Alineación de los titulos del encabezado */
+.th-Importe, .th-impString {
+  justify-content: right;
+}
+.th-Empresa, .th-CLAVE_IMPORTE, .th-Check {
+  justify-content: center;
+}
+
+.td > input{
+  padding: 0.2rem;
+  background: transparent;
+  max-width: 100%;
+  max-height: 1.5em;
+  border: white;
+}
+.date-wrapper{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.resizer{
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 5px;
+  background: #27bbdd;
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+  border-radius: 6px;
+  z-index: 50;
+}
+.resizer.isResizing{
+  background: #2eff31;
+  opacity: 1;
+}
+*:hover > .resizer {
+  opacity: 1;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.table-container {
+  flex: 1;
+  overflow: auto;
+}
+
+.pagination-controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.css-1ik61og {
+  padding: 0.25em 0.5em;
+}
+
+.fila-seleccionada-verde {
+  background-color: #a7e3c4; /* Un verde más claro que #81d4a3 */
+  /* transition: background-color 0.3s ease; */
+}
+
+.fila-seleccionada-rojo {
+  background-color: #f2b8bb; /* Un rojo más claro que #e99fa2 */
+  /* transition: background-color 0.3s ease; */
+}

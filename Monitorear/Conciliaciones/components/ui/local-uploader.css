@@ -1,0 +1,20 @@
+/* Para colapsar el contenedor (cuando está cerrado) */
+.collapsed-container {
+  max-height: fit-content; /* Solo muestra el título y el botón */
+  overflow: hidden; /* Ocultar el contenido adicional */
+  transition: max-height 0.3s ease-out; /* Animación suave */
+}
+
+/* Para expandir el contenedor (cuando está abierto) */
+.expanded-container {
+  max-height: 100%; /* Mostrar todo el contenido */
+  transition: max-height 0.3s ease-in; /* Animación suave */
+}
+
+.ant-upload-list-picture-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

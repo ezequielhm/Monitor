@@ -9,8 +9,7 @@ from docx import Document
 from PyPDF2 import PdfReader
 import openpyxl
 import estilo
-
-CARPETA_OBJETIVO = r".\Monitorear"
+from folder_selector import seleccionar_carpeta
 
 class FolderMonitorHandler(FileSystemEventHandler):
     def __init__(self, update_callback):
@@ -50,7 +49,7 @@ class FolderMonitorApp:
         )
         self.buscar_btn.pack(side=tk.LEFT, padx=5)
 
-        # Treeview para mostrar archivos en estructura de carpeta
+        # Treeview
         self.tree = ttk.Treeview(root)
         self.tree.heading('#0', text='Archivos', anchor='w')
         self.tree.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
@@ -74,20 +73,16 @@ class FolderMonitorApp:
             if rel_dir == ".":
                 rel_dir = ""
 
-            # Añadir carpetas
             for dirname in dirnames:
                 ruta = os.path.normpath(os.path.join(rel_dir, dirname))
                 carpetas.append(ruta)
 
-            # Añadir archivos
             for filename in filenames:
                 ruta = os.path.normpath(os.path.join(rel_dir, filename))
                 archivos.append(ruta)
 
-        # Ordenar por nombre
         self.todos_los_archivos = sorted(carpetas) + sorted(archivos)
         self.mostrar_lista(self.todos_los_archivos)
-
 
     def mostrar_lista(self, archivos):
         self.tree.delete(*self.tree.get_children())
@@ -118,7 +113,7 @@ class FolderMonitorApp:
             nombre = archivo_rel.lower()
 
             try:
-                if nombre.endswith(('.txt', '.md', '.csv', '.log', '.json', '.html', '.js', '.py')):
+                if nombre.endswith(('.txt', '.md', '.csv', '.log', '.json', '.html', '.js', '.tsx', '.py', '.dtsx')):
                     with open(ruta, 'r', encoding='utf-8', errors='ignore') as f:
                         texto = f.read().lower()
                 elif nombre.endswith('.docx'):
@@ -157,6 +152,10 @@ class FolderMonitorApp:
                     messagebox.showerror("Error al abrir archivo", str(e))
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = FolderMonitorApp(root, CARPETA_OBJETIVO)
-    root.mainloop()
+    carpeta_seleccionada = seleccionar_carpeta()
+    if carpeta_seleccionada:
+        root = tk.Tk()
+        app = FolderMonitorApp(root, carpeta_seleccionada)
+        root.mainloop()
+    else:
+        print("No se seleccionó ninguna carpeta.")
